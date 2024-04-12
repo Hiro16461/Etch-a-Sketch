@@ -9,6 +9,16 @@ function createInitialGrids() {
 	}
 }
 
+function drawBGRed() {
+	const gridItemsDiv = document.querySelectorAll('.grid-item');
+
+	Array.from(gridItemsDiv).forEach((gridItem) => {
+		gridItem.addEventListener('mouseenter', (e) => {
+			e.target.style.backgroundColor = 'red';
+		});
+	});
+}
+
 createInitialGrids();
 
 newGridBtn.addEventListener('click', (e) => {
@@ -30,19 +40,7 @@ newGridBtn.addEventListener('click', (e) => {
 		gridContainer.appendChild(gridItem);
 	}
 
-	const gridItemsDiv = document.querySelectorAll('.grid-item');
-
-	Array.from(gridItemsDiv).forEach((gridItem) => {
-		gridItem.addEventListener('mouseenter', (e) => {
-			e.target.style.backgroundColor = 'red';
-		});
-	});
+    drawBGRed();
 });
 
-const gridItems = document.querySelectorAll('.grid-item');
-
-Array.from(gridItems).forEach((gridItem) => {
-	gridItem.addEventListener('mouseenter', (e) => {
-		e.target.style.backgroundColor = 'red';
-	});
-});
+drawBGRed();
