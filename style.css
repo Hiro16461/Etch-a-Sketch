@@ -42,6 +42,18 @@ table {
 	border-spacing: 0;
 }
 
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 20px;
+}
+
+button {
+    cursor: pointer;
+}
+
 #grid-container {
     border: 1px solid black;
     margin: 0 auto;
