@@ -1,6 +1,7 @@
 const gridContainer = document.querySelector('#grid-container');
 const newGridBtn = document.querySelector('.create-new-grid');
 const randomColorBtn = document.querySelector('.random-color');
+const darkeningEffectBtn = document.querySelector('.dark-color');
 
 function createInitialGrid() {
 	for (let i = 0; i < 16 * 16; i++) {
@@ -59,6 +60,16 @@ function drawBGRandom() {
 	});
 }
 
+function drawBGDark() {
+	const gridItemsDiv = document.querySelectorAll('.grid-item');
+
+	Array.from(gridItemsDiv).forEach((gridItem) => {
+		gridItem.addEventListener('mouseenter', (e) => {
+            e.target.style.filter = "grayscale(100%)"
+		});
+	});
+}
+
 createInitialGrid();
 drawBGRed();
 
@@ -67,7 +78,10 @@ newGridBtn.addEventListener('click', (e) => {
 	drawBGRed();
 });
 
-
 randomColorBtn.addEventListener('click', (e) => {
 	drawBGRandom();
 });
+
+darkeningEffectBtn.addEventListener('click', (e) => {
+    drawBGDark();
+})
