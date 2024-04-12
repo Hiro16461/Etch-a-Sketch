@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('#grid-container');
 const newGridBtn = document.querySelector('.create-new-grid');
+const randomColorBtn = document.querySelector('.random-color');
 
 function createInitialGrids() {
 	for (let i = 0; i < 16 * 16; i++) {
@@ -17,6 +18,15 @@ function drawBGRed() {
 			e.target.style.backgroundColor = 'red';
 		});
 	});
+}
+
+function getRandomColor() {
+	const letters = '0123456789ABCDEF';
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
 }
 
 createInitialGrids();
@@ -40,7 +50,17 @@ newGridBtn.addEventListener('click', (e) => {
 		gridContainer.appendChild(gridItem);
 	}
 
-    drawBGRed();
+	drawBGRed();
 });
 
 drawBGRed();
+
+randomColorBtn.addEventListener('click', (e) => {
+	const gridItemsDiv = document.querySelectorAll('.grid-item');
+
+	Array.from(gridItemsDiv).forEach((gridItem) => {
+		gridItem.addEventListener('mouseenter', (e) => {
+            e.target.style.backgroundColor = getRandomColor();
+		});
+	});
+});
